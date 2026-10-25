@@ -1,1 +1,0 @@
-# cce106-activities
