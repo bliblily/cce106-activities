@@ -20,7 +20,7 @@ class Pavlova extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset('assets/pavlova.jpg', fit: BoxFit.cover),  
+          Image.asset('assets/pavlova.jpg', fit: BoxFit.cover, height: 300),  
           Padding(padding:  const EdgeInsets.all(16.0), 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,8 +111,4 @@ class Pavlova extends StatelessWidget {
         buildIconTab(Icons.people_alt_outlined, 'FEEDS', '4-6 hrs'),
       ],
     );
-
-
-
-
   }
