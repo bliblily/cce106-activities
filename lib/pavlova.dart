@@ -17,6 +17,7 @@ class Pavlova extends StatelessWidget {
       centerTitle: true,  
       backgroundColor: const Color.fromARGB(255, 70, 17, 17),
       ),   
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -31,6 +32,7 @@ class Pavlova extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
+
               const SizedBox(height: 8),
               const Text(
                 'Pavlova is a meringue-based dessert named after the Russian ballerina Anna Pavlova. Pavlova features a crisp crust and soft, light inside, usually topped with fruit and whipped cream.',
@@ -93,8 +95,7 @@ class Pavlova extends StatelessWidget {
           ),
         ),
         
-        SizedBox(height: 5),
-
+        const SizedBox(height: 5),
         Text(value, 
         style: const TextStyle(
           fontSize: 12
