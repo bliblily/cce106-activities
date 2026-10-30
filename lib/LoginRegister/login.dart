@@ -45,9 +45,9 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Peralta Activity 5'),
+        title: const Text('Peralta Activity 6'),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.lightBlue,
         foregroundColor: Colors.white,
       ),
 
@@ -71,15 +71,16 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 15),
             TextField(
               controller: _passwordController,
-              obscureText: true,
+              
               decoration: const InputDecoration(
                 labelText: 'Password',
                 hintText: 'Enter your password',
                 prefixIcon: Icon(Icons.lock),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all( Radius.circular(12.0)),
-                ),
+                ), 
               ),
+              obscureText: true,
             ),
             const SizedBox(height: 30),
 

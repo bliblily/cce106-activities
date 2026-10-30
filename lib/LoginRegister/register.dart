@@ -13,7 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _civilStatusController = TextEditingController();
   final TextEditingController _birthdateController = TextEditingController();
@@ -22,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if(_fullnameController.text.isEmpty ||
     _usernameController.text.isEmpty || 
     _passwordController.text.isEmpty || 
-    _confirmController.text.isEmpty ||  
+    _confirmPasswordController.text.isEmpty ||  
     _genderController.text.isEmpty || 
     _civilStatusController.text.isEmpty || 
     _birthdateController.text.isEmpty) {
@@ -32,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
   }
 
-  if (_passwordController.text != _confirmController.text) {
+  if (_passwordController.text != _confirmPasswordController.text) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Passwords do not match. Please try again.')),
       );
@@ -43,11 +43,105 @@ class _RegisterPageState extends State<RegisterPage> {
       builder: (context) => LoginPage(),
     ),
   );
+  }                                                                                                                                                                           
 
-}
+  InputDecoration _inputDecoration(String label, IconData icon) {
+    return InputDecoration(
+      labelText: label,
+      prefixIcon: Icon(icon),
+      border:const OutlineInputBorder(
+        borderRadius: BorderRadius.all( Radius.circular(12.0),
+        ),
+      ),
+    );
+  } 
 
 
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Peralta Activity 6'),
+        centerTitle: true,
+        backgroundColor: Colors.lightBlue,
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _fullnameController,
+              decoration: _inputDecoration('Full Name', Icons.person),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _usernameController,
+              decoration: _inputDecoration('Username', Icons.person),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _passwordController,
+              decoration: _inputDecoration('Password', Icons.lock),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: _inputDecoration('Confirm Password', Icons.lock_outline),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _genderController,
+              decoration: _inputDecoration('Gender', Icons.male_rounded),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _civilStatusController,
+              decoration: _inputDecoration('Civil Status', Icons.people),
+            ),
+            const SizedBox(height: 15,),
+
+            TextField(
+              controller: _birthdateController,
+              decoration: _inputDecoration('Birth Date', Icons.calendar_today),
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (pickedDate != null) {
+                  setState(() {
+                    _birthdateController.text = 
+                    "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+                  });
+                }
+              },
+
+            ),
+            const SizedBox(height: 25,),
+
+            ElevatedButton(onPressed: _register, 
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              minimumSize: const Size.fromHeight( 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: const Text('Register', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
+            )
+
+          ],
+        ),
+
+    ),
+    );
   }
 }

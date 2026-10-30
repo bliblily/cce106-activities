@@ -1,60 +1,24 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/LoginRegister/login.dart';
 
 void main() {
-  runApp(const MyApp(name: 'Gwendolyn Lianna Peralta'));
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  final String name;
-
-  const MyApp({super.key, required this.name});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool _clicked = false;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Greeting Card'),
-          centerTitle: true,
-          backgroundColor: Colors.deepPurple,
-          foregroundColor: Colors.white,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         ),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Hello, ${widget.name}!',
-                style: const TextStyle(fontSize: 24),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _clicked = true;
-                  });
-                },
-                child: const Text('Click me'),
-              ),
-              if (_clicked)
-                const Text('Clicked successfully!'),
-            ],
-          ),
-        ),
-      ),
+
+      home: LoginPage(),
     );
   }
 }
 
-String formatFullName(String first, String middle, String last) {
-  return '$first $middle $last';
-}
+
