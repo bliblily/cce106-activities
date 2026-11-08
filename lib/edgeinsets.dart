@@ -53,8 +53,8 @@ class EdgeInsetsDemo extends StatelessWidget {
                 ),
               ],
             ),
-        ),
-          ),      
-          );
+           ),
+        ),      
+      );
   }
 }
